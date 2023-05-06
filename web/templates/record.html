@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+<div class="card">
+  <div class="card-header"><b>
+    	User Information</b>
+  </div>
+  <div class="card-body">
+        <p class="card-text">
+            <b>First Name: </b>{{ single_record.email }}
+        </p>
+        <p class="card-text">
+            <b>Last Name: </b>{{ single_record.email }}
+        </p>
+        <p class="card-text">
+            <b>Email: </b>{{ single_record.email }}
+        </p>
+
+        <p class="card-text">
+            <b>Phone: </b>{{ single_record.phone }}
+        </p>
+
+        <p class="card-text">
+            <b>Address: </b>{{ single_record.address }}
+        </p>
+
+        <p class="card-text">
+            <b>City: </b>{{ single_record.city }}
+        </p>
+
+        <p class="card-text">
+        <b>Province: </b>{{ single_record.province }}
+        </p>
+
+        <p class="card-text">
+            <b>postal code: </b>{{ single_record.postal_code }}
+        </p>
+
+        <p class="card-text">
+            <b>Created At: </b>{{ single_record.created_at }}
+        </p>
+
+        <p class="card-text">
+            <b>ID: </b>{{ single_record.id }}
+        </p>
+  </div>
+</div>
+
+<br/>
+    <a href="{% url 'home' %}" class="btn btn-secondary">
+        Back
+    </a>
+    <a href="{% url 'delete_record' single_record.id %}" class="btn btn-danger">
+        Delete
+    </a>
+    <a href="{% url 'update_record' single_record.id %}" class="btn btn-primary">
+        Update
+    </a>
+
+
+		
+
+{% endblock %}

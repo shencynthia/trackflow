@@ -1,17 +1,51 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="col-md-6 offset-md-3">
-
     {% if user.is_authenticated %}
 
-    <h1>hello bog</h1>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-primary">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Address</th>
+            <th scope="col">City</th>
+            <th scope="col">Province</th>
+            <th scope="col">Postal Code</th>
+            <th scope="col">Created At</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% if records %}
+            {% for record in records %}
+                <tr>
+                <td><a href="{% url 'record' record.id%}">{{record.id }} </a></td> 
+                <td> {{ record.first_name }} {{ record.last_name }} </td> 
+                <td> {{ record.email }} </td> 
+                <td> {{ record.phone }} </td> 
+                <td> {{ record.address }} </td> 
+                <td>{{ record.city }} </td> 
+                <td> {{ record.province }} </td> 
+                <td> {{ record.postal_code }} </td> 
+                <td> {{ record.created_at }} </td> 
+                </tr>
+            {% endfor %}
+        {% endif %}
+
+        </tbody>
+    </table>
+        <a href="{% url 'add_record' %}" class="btn btn-primary">
+        Add
+        </a>
+
+
 
     {% else %}
-
+    <div class="col-md-6 offset-md-3">
         <h1>Login</h1>
-        <br/>
-
         <form method="post" action="{% url 'home' %}">
             {% csrf_token %}
 
@@ -29,8 +63,7 @@
 
         </form>
 
-        </div>
-
+    </div>
 {% endif %}
 
 {% endblock %}
